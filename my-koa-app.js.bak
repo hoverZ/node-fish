@@ -1,0 +1,35 @@
+const Koa = require('koa');
+const app = new Koa();
+const kc = require('koa-controller');
+
+app.env = "test";
+
+// 读配置
+const test = require('./test');
+
+app.use(async (ctx, next) => {
+    console.log(1);
+    await next();
+    console.log(5);
+    const rt = ctx.response.get('X-Response-Time');
+    console.log(`${ctx.method} ${ctx.url} - ${rt}`); // `` 语法 = ctx.method+ " " + ctx.url + " - " + rt
+});
+
+app.use(async (ctx, next) => {
+    const start = Date.now();
+    console.log(2);
+    await next();
+    console.log(4);
+    const ms = Date.now() - start;
+    // 上下文设置
+    ctx.set('X-Response-Time', `${ms}ms`);
+});
+
+app.use(ctx => {
+  console.log(3);
+  console.log('hello');
+  ctx.body = 'Hello Koa';
+  let time = 10;
+});
+
+app.listen(3000);

@@ -1,0 +1,23 @@
+{
+  "name": "fish",
+  "version": "1.0.0",
+  "description": "摸鱼",
+  "main": "index.js",
+  "scripts": {
+    "test": "test fish"
+  },
+  "keywords": [
+    "vector",
+    "fish"
+  ],
+  "author": "vector",
+  "license": "ISC",
+  "dependencies": {
+    "koa": "^2.5.2",
+    "koa-router": "^7.4.0",
+    "mysql": "^2.16.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0"
+  }
+}
