@@ -1,4 +1,4 @@
-let project = require('./../modules/project/project');
+let project = require('./../../modules/project/project');
 
 module.exports = [
     {

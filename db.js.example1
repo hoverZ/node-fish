@@ -1,0 +1,20 @@
+module.exports = {
+    
+    init: function( config ){
+        const Sequelize = require('sequelize');
+        const sequelize = new Sequelize(config.database, config.username, config.password, {
+            host: 'localhost',
+            dialect: 'mysql',
+            pool: {
+              max: 5,
+              min: 0,
+              acquire: 30000,
+              idle: 10000
+            }
+        });
+        // 添加 modle 
+        const LoadModel = require('./models/model');
+        LoadModel.initModel(sequelize);
+        return sequelize;
+    }
+}
